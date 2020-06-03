@@ -38,7 +38,6 @@ from tfx.orchestration.kubeflow import test_utils
 from tfx.proto import evaluator_pb2
 from tfx.proto import trainer_pb2
 from tfx.types import standard_artifacts
-from tfx.utils import dsl_utils
 from tfx.utils import path_utils
 
 
@@ -138,7 +137,7 @@ class KubeflowGCPIntegrationTest(test_utils.BaseKubeflowTest):
     pipeline_name = 'kubeflow-csv-example-gen-dataflow-test-{}'.format(
         self._random_id())
     pipeline = self._create_dataflow_pipeline(pipeline_name, [
-        CsvExampleGen(input=dsl_utils.csv_input(self._data_root)),
+        CsvExampleGen(input=self._data_root),
     ])
     self._compile_and_run_pipeline(pipeline)
 
