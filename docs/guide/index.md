@@ -123,6 +123,9 @@ A TFX pipeline typically includes the following components:
     and helps you validate your exported models, ensuring that they are "good
     enough" to be pushed to production.
 
+*   [**BulkInferrer**](bulkinferrer.md) performs batch processing on a model
+    with unlabelled inference requests.
+
 *   [**InfraValidator**](infra_validator.md) checks the model is actually
     servable from the infrastructure, and prevents bad model from being pushed.
 
