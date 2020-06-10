@@ -28,7 +28,9 @@ from absl import logging
 
 from ml_metadata.proto import metadata_store_pb2
 from tfx.components.base import base_node
+from tfx.components.base import base_executor
 from tfx.orchestration import data_types
+from tfx.components.base.executor_spec import ExecutorClassSpec
 
 # Argo's workflow name cannot exceed 63 chars:
 # see https://github.com/argoproj/argo/issues/1324.
@@ -38,7 +40,6 @@ MAX_PIPELINE_NAME_LENGTH = 63
 
 # Name of pipeline_root parameter.
 _PIPELINE_ROOT = 'pipeline-root'
-
 
 # Pipeline root is by default specified as a RuntimeParameter when runnning on
 # KubeflowDagRunner. This constant offers users an easy access to the pipeline
@@ -136,6 +137,13 @@ class Pipeline(object):
   def components(self):
     """A list of logical components that are deduped and topological sorted."""
     return self._components
+
+  # for test
+  def _set_dummy(self, component_id: Text,
+                 executor: base_executor.BaseExecutor):
+      for component in self._components:
+          if component_id == component.id:
+              component.executor_spec = ExecutorClassSpec(executor)
 
   @components.setter
   def components(self, components: List[base_node.BaseNode]):

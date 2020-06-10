@@ -62,6 +62,7 @@ class _ComponentAsDoFn(beam.DoFn):
     driver_args = data_types.DriverArgs(enable_cache=tfx_pipeline.enable_cache)
     metadata_connection = metadata.Metadata(
         tfx_pipeline.metadata_connection_config)
+
     self._component_launcher = component_launcher_class.create(
         component=component,
         pipeline_info=tfx_pipeline.pipeline_info,

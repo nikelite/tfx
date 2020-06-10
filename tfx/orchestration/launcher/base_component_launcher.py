@@ -27,6 +27,7 @@ from six import with_metaclass
 from tfx import types
 from tfx.components.base import base_node
 from tfx.components.base import executor_spec
+from tfx.components.base import base_executor
 from tfx.orchestration import data_types
 from tfx.orchestration import metadata
 from tfx.orchestration import publisher
