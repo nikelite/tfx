@@ -5,6 +5,8 @@
 ## Bug fixes and other changes
 *   Added Tuner component, which is still work in progress.
 *   Added Tuner component to Iris e2e example.
+*   Pusher can now be run without Evaluator. Still it is strongly recommended to
+    use both Evaluator and InfraValidator in your production pipeline.
 
 ## Breaking changes
 
